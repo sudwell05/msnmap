@@ -1,0 +1,8 @@
+# Production dependencies
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+SQLAlchemy==2.0.36
+python-nmap==0.7.1
+shodan==1.29.1

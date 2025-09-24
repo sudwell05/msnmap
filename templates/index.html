@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Network Scanner Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>🔍 Enhanced Network Scanner Application</h1>
+            <div class="theme-toggle">
+                <label>
+                    <input type="checkbox" id="theme-switcher"> 🌙 Dark Mode
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+
+        <!-- Scan Form -->
+        <form id="scan-form" class="scan-form">
+            <div class="form-group">
+                <label for="targets">🎯 Targets (IP/Range):</label>
+                <textarea id="targets" name="targets" rows="3" required
+                    placeholder="192.168.1.1&#10;192.168.1.0/24&#10;localhost&#10;example.com"></textarea>
+                <small class="form-help">Enter one target per line. Supports IP addresses, ranges, and hostnames.</small>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="scan_type">🔧 Scan Engine:</label>
+                    <select id="scan_type" name="scan_type">
+                        <option value="nmap">Nmap (Comprehensive Active Scanning)</option>
+                        <option value="smap">Smap (Fast Network Scanning)</option>
+                        <option value="shodan">Shodan (Passive Intelligence)</option>
+                        <option value="both">Both (Nmap + Smap + Shodan)</option>
+                    </select>
+                    <small class="form-help">Choose your preferred scanning engine or use multiple for comprehensive results.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="scan_mode">⚡ Scan Mode:</label>
+                    <select id="scan_mode" name="scan_mode">
+                        <option value="quick">Quick Scan (Top 100 Ports) - Fast</option>
+                        <option value="detailed" selected>Detailed Scan (1-1000 Ports) - Balanced</option>
+                        <option value="full">Full Scan (All 65535 Ports) - Comprehensive</option>
+                    </select>
+                    <small class="form-help">Scan mode automatically sets the port range. You can override it manually below.</small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ports">🔌 Port Range:</label>
+                    <input type="text" id="ports" name="ports" value="1-1000" 
+                           placeholder="1-1000 or 80,443,8080 or 22,80,443,3306">
+                    <small class="form-help">Port range is automatically set based on scan mode, but you can customize it manually.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="timing">⏱️ Scan Timing:</label>
+                    <select id="timing" name="timing">
+                        <option value="T1">T1 - Paranoid (Very Slow, Stealthy)</option>
+                        <option value="T2">T2 - Sneaky (Slow, Stealthy)</option>
+                        <option value="T3" selected>T3 - Polite (Normal, Balanced)</option>
+                        <option value="T4">T4 - Aggressive (Fast, More Visible)</option>
+                        <option value="T5">T5 - Insane (Very Fast, Very Visible)</option>
+                    </select>
+                    <small class="form-help">Faster timing may be detected by IDS/IPS systems.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="scripts">📜 NSE Scripts (Optional):</label>
+                <input type="text" id="scripts" name="scripts" 
+                       placeholder="banner,http-title,ssl-cert,ssh-hostkey or leave empty for default">
+                <small class="form-help">Custom Nmap NSE scripts for enhanced service detection.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">🚀 Start Enhanced Scan</button>
+        </form>
+
+        <!-- Status Panel -->
+        <div id="status-panel" class="status-panel" style="display: none;"></div>
+
+        <!-- Results -->
+        <div id="report-container"></div>
+
+        <!-- Scan History -->
+        <div id="scan-history">
+            <h2>📚 Scan History</h2>
+            <div class="scans-controls">
+                <button id="refresh-scans" class="btn btn-secondary">🔄 Refresh</button>
+                <button id="cleanup-scans" class="btn btn-warning">🧹 Cleanup Completed</button>
+                <button id="view-statistics" class="btn btn-info">📊 View Statistics</button>
+                <button id="export-all" class="btn btn-success">📤 Export All</button>
+            </div>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>📅 Date</th>
+                        <th>🔧 Engine</th>
+                        <th>📊 Status</th>
+                        <th>🎯 Targets</th>
+                        <th>🖥️ Hosts Found</th>
+                        <th>📈 Progress</th>
+                        <th>⚡ Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="scans-list"></tbody>
+            </table>
+        </div>
+
+        <!-- Statistics Modal -->
+        <div id="statistics-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>📊 Scan Statistics</h2>
+                <div id="statistics-content"></div>
+            </div>
+        </div>
+
+        <!-- Scanner Status -->
+        <div id="scanner-status" class="scanner-status">
+            <h3>🔧 Scanner Status</h3>
+            <div id="scanner-availability"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Enhanced Network Scanner Application | 🔍 Nmap + Smap + Shodan Integration</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+</body>
+</html>

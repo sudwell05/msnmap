@@ -1,0 +1,403 @@
+/* Dark Theme Styles - Updated for theme class system */
+.theme-dark {
+    --primary-color: #1a202c;
+    --secondary-color: #3182ce;
+    --success-color: #38a169;
+    --warning-color: #d69e2e;
+    --danger-color: #e53e3e;
+    --text-color: #e2e8f0;
+    --bg-color: #1a202c;
+    --border-color: #4a5568;
+    --shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Body and main elements */
+.theme-dark body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Header */
+.theme-dark .header {
+    background-color: #2d3748;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Forms */
+.theme-dark .scan-form {
+    background: #2d3748;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.theme-dark input[type="text"],
+.theme-dark textarea,
+.theme-dark select {
+    background-color: #4a5568;
+    color: var(--text-color);
+    border-color: #718096;
+}
+
+.theme-dark input[type="text"]:focus,
+.theme-dark textarea:focus,
+.theme-dark select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.theme-dark input[type="text"]::placeholder,
+.theme-dark textarea::placeholder {
+    color: #a0aec0;
+}
+
+/* Labels */
+.theme-dark label {
+    color: var(--text-color);
+}
+
+/* Buttons */
+.theme-dark .btn-secondary {
+    background-color: #4a5568;
+    border-color: #4a5568;
+    color: var(--text-color);
+}
+
+.theme-dark .btn-warning {
+    background-color: var(--warning-color);
+    color: #1a202c;
+}
+
+/* Status Panel */
+.theme-dark .status-panel {
+    background: #2d3748;
+    border-left-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.theme-dark .status-panel h3 {
+    color: var(--text-color);
+}
+
+.theme-dark .status-panel .status-info {
+    background: #4a5568;
+    border-color: var(--border-color);
+}
+
+/* Tables */
+.theme-dark .results-table {
+    background: #2d3748;
+    border: 1px solid var(--border-color);
+}
+
+.theme-dark .results-table th {
+    background-color: #4a5568;
+    color: var(--text-color);
+    border-bottom: 1px solid #718096;
+}
+
+.theme-dark .results-table td {
+    background-color: #2d3748;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.theme-dark .results-table tr:hover {
+    background-color: #4a5568;
+}
+
+/* Ports Table */
+.theme-dark .ports-table {
+    background: #2d3748;
+    border-color: var(--border-color);
+}
+
+.theme-dark .ports-table th {
+    background-color: #4a5568;
+    color: var(--text-color);
+    border-bottom-color: #718096;
+}
+
+.theme-dark .ports-table td {
+    background-color: #2d3748;
+    color: var(--text-color);
+    border-bottom-color: var(--border-color);
+}
+
+.theme-dark .ports-table tr:hover {
+    background-color: #4a5568;
+}
+
+/* Host Results */
+.theme-dark .host-result {
+    background: #2d3748;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.theme-dark .host-info {
+    background: #4a5568;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* Statistics Grid */
+.theme-dark .stat-item {
+    background: #2d3748;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.theme-dark .stat-item h3 {
+    color: var(--secondary-color);
+}
+
+.theme-dark .stat-item p {
+    color: var(--text-color);
+}
+
+/* Scan Types */
+.theme-dark .scan-type {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Recent Activity */
+.theme-dark .activity-item {
+    background: #2d3748;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.theme-dark .activity-time {
+    color: #a0aec0;
+}
+
+.theme-dark .activity-target {
+    color: var(--text-color);
+}
+
+/* Alerts */
+.theme-dark .alert-danger {
+    background-color: #742a2a;
+    border-color: var(--danger-color);
+    color: #feb2b2;
+}
+
+.theme-dark .alert-success {
+    background-color: #276749;
+    border-color: var(--success-color);
+    color: #9ae6b4;
+}
+
+.theme-dark .alert-warning {
+    background-color: #744210;
+    border-color: var(--warning-color);
+    color: #fbd38d;
+}
+
+.theme-dark .alert-info {
+    background-color: #2a4365;
+    border-color: var(--secondary-color);
+    color: #90cdf4;
+}
+
+/* Footer */
+.theme-dark .footer {
+    background-color: #2d3748;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Scan Results */
+.theme-dark .scan-results {
+    background: #2d3748;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.theme-dark .result-summary {
+    background: #374151;
+    border: 1px solid var(--border-color);
+}
+
+.theme-dark .result-actions {
+    border-top-color: var(--border-color);
+}
+
+/* Log Container */
+.theme-dark .log-container {
+    background: #1a1a1a;
+    color: #e2e8f0;
+    border-color: var(--border-color);
+}
+
+.theme-dark .log-entry {
+    color: #e2e8f0;
+}
+
+/* Progress Bar */
+.theme-dark .progress-bar {
+    background: var(--border-color);
+}
+
+/* Modal */
+.theme-dark .modal-content {
+    background-color: #2d3748;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.theme-dark .close {
+    color: #a0aec0;
+}
+
+.theme-dark .close:hover,
+.theme-dark .close:focus {
+    color: var(--danger-color);
+}
+
+/* Notification System */
+.theme-dark .notification {
+    background: #2d3748;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.theme-dark .notification-message {
+    color: var(--text-color);
+}
+
+.theme-dark .notification-close {
+    color: #a0aec0;
+}
+
+.theme-dark .notification-close:hover {
+    color: var(--danger-color);
+}
+
+.theme-dark .notification-success {
+    background-color: #1a2e1a;
+    border-left-color: var(--success-color);
+}
+
+.theme-dark .notification-error {
+    background-color: #2e1a1a;
+    border-left-color: var(--danger-color);
+}
+
+.theme-dark .notification-warning {
+    background-color: #2e2a1a;
+    border-left-color: var(--warning-color);
+}
+
+.theme-dark .notification-info {
+    background-color: #1a2a2e;
+    border-left-color: var(--secondary-color);
+}
+
+/* Scrollbars for dark theme */
+.theme-dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.theme-dark ::-webkit-scrollbar-track {
+    background: #2d3748;
+    border-radius: 4px;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb {
+    background: #4a5568;
+    border-radius: 4px;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+/* Selection */
+.theme-dark ::selection {
+    background: rgba(49, 130, 206, 0.3);
+    color: var(--text-color);
+}
+
+.theme-dark ::-moz-selection {
+    background: rgba(49, 130, 206, 0.3);
+    color: var(--text-color);
+}
+
+/* Badges in dark theme */
+.theme-dark .badge-warning {
+    background-color: var(--warning-color);
+    color: #1a202c;
+}
+
+.theme-dark .badge-secondary {
+    background-color: #4a5568;
+    color: var(--text-color);
+}
+
+.theme-dark .badge-info {
+    background-color: #2b6cb0;
+    color: white;
+}
+
+/* Transitions for smooth theme switching */
+.theme-dark * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Status Colors in Dark Theme */
+.theme-dark .status-open {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.theme-dark .status-closed {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.theme-dark .status-filtered {
+    background-color: var(--warning-color);
+    color: #1a202c;
+}
+
+.theme-dark .status-unfiltered {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.theme-dark .status-running {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.theme-dark .status-completed {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.theme-dark .status-error {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.theme-dark .status-stopped {
+    background-color: var(--warning-color);
+    color: #1a202c;
+}
+
+.theme-dark .status-unknown {
+    background-color: #4a5568;
+    color: var(--text-color);
+}
+
+/* Text Utilities in Dark Theme */
+.theme-dark .text-muted {
+    color: #a0aec0;
+    font-style: italic;
+}
+
+.theme-dark .text-center {
+    text-align: center;
+}
